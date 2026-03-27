@@ -1,0 +1,48 @@
+# PaperBanana Configuration
+# Documentation: https://paper-banana.net/docs
+
+model:
+  name: "paperbanana-v1"
+  device: "cuda"
+  precision: "fp16"
+
+generation:
+  max_steps: 50
+  guidance_scale: 7.5
+  seed: null  # Random if null
+
+agents:
+  retriever:
+    enabled: true
+    model: "sentence-transformers/all-MiniLM-L6-v2"
+  planner:
+    enabled: true
+    max_elements: 20
+  stylist:
+    enabled: true
+    default_style: "clean_tech"
+  visualizer:
+    enabled: true
+    resolution: [1024, 768]
+  critic:
+    enabled: true
+    min_quality_score: 0.8
+
+styles:
+  clean_tech:
+    colors: ["#2563eb", "#3b82f6", "#60a5fa", "#93c5fd"]
+    font: "Inter"
+    line_width: 2
+  classic_journal:
+    colors: ["#1f2937", "#374151", "#6b7280", "#9ca3af"]
+    font: "Times New Roman"
+    line_width: 1
+  modern_ai:
+    colors: ["#7c3aed", "#8b5cf6", "#a78bfa", "#c4b5fd"]
+    font: "SF Pro"
+    line_width: 2
+
+output:
+  format: "svg"
+  quality: 95
+  dpi: 300
