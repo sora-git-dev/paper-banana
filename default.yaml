@@ -44,5 +44,7 @@ styles:
 
 output:
   format: "svg"
+  width: 1180
+  height: 520
   quality: 95
   dpi: 300

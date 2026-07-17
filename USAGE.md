@@ -1,74 +1,74 @@
 # PaperBanana Usage Guide
 
-## Quick Start
+This guide explains how to run the local PaperBanana demo and generate an SVG diagram from a text prompt.
 
-### Online (Recommended)
-Visit [paper-banana.net](https://paper-banana.net) for the full web experience.
-
-### Local Installation
+## Install
 
 ```bash
-# Clone repository
-git clone https://github.com/sora-git-dev/paper-banana.git
-cd paper-banana
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Run inference
-python inference.py --input "Neural network architecture with 3 layers" --style clean_tech
 ```
 
-## Styles
+The repository demo only requires `pyyaml`. It does not need a GPU or model download.
 
-| Style | Best For |
-|-------|----------|
-| `clean_tech` | ML/AI papers, technical diagrams |
-| `classic_journal` | Nature, Science, traditional journals |
-| `modern_ai` | NeurIPS, ICML, modern AI conferences |
+## Generate a diagram
 
-## Multi-Agent Pipeline
-
-PaperBanana uses 5 specialized agents:
-
-1. **Retriever** - Understands scientific context
-2. **Planner** - Designs optimal layout
-3. **Stylist** - Applies visual styling
-4. **Visualizer** - Generates the diagram
-5. **Critic** - Ensures quality standards
-
-## Examples
-
-### Architecture Diagram
 ```bash
-python inference.py -i "Transformer architecture with attention mechanism"
+python inference.py \
+  --input "Dataset, preprocessing, encoder, attention block, decoder, evaluation" \
+  --style clean_tech
 ```
 
-### Flowchart
+The output is saved to:
+
+```text
+outputs/diagram.svg
+```
+
+## Try different styles
+
 ```bash
-python inference.py -i "Data preprocessing pipeline: load, clean, transform, save"
+python inference.py -i "Patient cohort, feature extraction, model training, validation, report" -s classic_journal
 ```
 
-### Statistical Plot
 ```bash
-python inference.py -i "Bar chart comparing model accuracy across datasets"
+python inference.py -i "Prompt, agent planner, renderer, critic, final figure" -s modern_ai
 ```
 
-## Output Formats
+## Prompt tips
 
-- **SVG** - Best for LaTeX, scalable
-- **PNG** - Universal compatibility
-- **PDF** - Print-ready
+PaperBanana works best when the prompt names the main steps or components:
+
+- Use comma-separated steps for workflow diagrams.
+- Use short nouns for architecture diagrams.
+- Keep labels concise for cleaner SVG output.
+
+Good example:
+
+```text
+Dataset, preprocessing, encoder, attention block, decoder, evaluation
+```
+
+Less useful example:
+
+```text
+Make a nice research diagram.
+```
 
 ## Configuration
 
-Edit `configs/default.yaml` to customize:
-- Model settings
-- Agent behavior
-- Style definitions
-- Output preferences
+Edit `default.yaml` to change:
 
-## Need Help?
+- Style colors
+- Font family
+- Line width
+- Canvas width and height
 
-- Documentation: https://paper-banana.net/docs
-- Issues: https://github.com/sora-git-dev/paper-banana/issues
+## Output format
+
+The local demo currently writes SVG. SVG is easy to edit in Figma, Illustrator, Inkscape, VS Code, and many paper-writing workflows.
+
+## Online version
+
+For richer AI-assisted diagram generation, visit:
+
+https://paper-banana.net/
